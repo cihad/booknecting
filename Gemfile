@@ -8,3 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+
+group :development, :test do
+	gem 'rspec-rails', '~> 3.0.0.beta'
+end
