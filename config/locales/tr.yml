@@ -1,0 +1,19 @@
+tr:
+  activerecord:
+    errors:
+      models:
+        user:
+          blank: "alanı gerekli."
+          attributes:
+            username:
+              blank: "alanı gerekli."
+              taken: "zaten alınmış. Başka bir kullanıcı adı deneyin."
+            email:
+              invalid: "geçersiz."
+              taken: "ile daha önce kullanıcı kaydı yapılmış."
+    attributes:
+      user:
+        username: "Kullanıcı adı"
+        first_name: "Ad"
+        last_name: "Soyad"
+        password: "Parola"
