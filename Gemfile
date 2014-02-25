@@ -8,6 +8,12 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'devise', '3.2.3'
+
+group :development, :test do
+  gem 'faker', '1.2.0'
+  gem 'pry', '~> 0.9'
+end
 
 group :test do
 	gem 'rspec-rails', '~> 3.0.0.beta'
