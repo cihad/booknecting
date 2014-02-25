@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise', '3.2.3'
+gem 'semantic-ui-sass', '~> 0.13.0.0'
 
 group :development, :test do
   gem 'faker', '1.2.0'
