@@ -1,9 +1,20 @@
 tr:
+  helpers:
+    select:
+      prompt: "Lütfen seçiniz"
+    submit:
+      submit: "Gönder"
+      create: "Ekle"
+      update: "Güncelle"
+      node_filter:
+        submit: "Filtrele"
+
   activerecord:
     errors:
+      messages:
+        blank: "Gerekli alan"
       models:
         user:
-          blank: "alanı gerekli."
           attributes:
             username:
               blank: "alanı gerekli."
@@ -17,3 +28,14 @@ tr:
         first_name: "Ad"
         last_name: "Soyad"
         password: "Parola"
+      book:
+        name: "Kitap adı"
+
+  books:
+    messages:
+      created: "Kitap başarıyla kaydedildi."
+      updated: "Kitap başarıyla güncellendi."
+    new:
+      title: "Yeni Kitap Ekle"
+    edit:
+      title: "Kitabı Düzenle"
