@@ -10,9 +10,12 @@
           <i class="search link icon"></i>
         </div>
       </div>
-      <a href="#" class="ui inverted item signup" data-content="Hello. This is an inverted popup" data-variation="inverted">
-        Sign Up
-      </a>
+
+      <% if user_signed_in? %>
+        <%= link_to t('users.signout'), destroy_user_session_path, method: :delete, class: "ui item"  %>
+      <% else %>
+        <%= link_to t('users.signin'), new_user_session_path, class: "ui item" %>
+      <% end %>
     </div>
   </div>
 </div>
