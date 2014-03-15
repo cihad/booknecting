@@ -17,7 +17,7 @@ describe User do
       subject.username = ""
       expect(subject).to_not be_valid
       expect(subject.errors.messages[:username]).to be_include \
-        I18n.t('activerecord.errors.models.user.attributes.username.blank')
+        I18n.t('activerecord.errors.messages.blank')
     end
 
     it "is uniqueness" do
@@ -26,7 +26,7 @@ describe User do
       other_user.valid?
       expect(other_user.errors.messages).to be_include(:username)
       expect(other_user.errors.messages[:username]).to be_include \
-        I18n.t('activerecord.errors.models.user.attributes.username.taken')
+        I18n.t('activerecord.errors.messages.taken')
     end
 
     it "is uniq case sensivite" do
@@ -35,7 +35,7 @@ describe User do
       other_user.valid?
       expect(other_user.errors.messages).to be_include(:username)
       expect(other_user.errors.messages[:username]).to be_include \
-        I18n.t('activerecord.errors.models.user.attributes.username.taken')
+        I18n.t('activerecord.errors.messages.taken')
     end
   end
 

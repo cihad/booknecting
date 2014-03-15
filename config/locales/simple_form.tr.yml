@@ -1,0 +1,5 @@
+tr:
+  simple_form:
+    hints:
+      user:
+        current_password: "Değişiklikleri onaylamak için şimdiki parolanıza ihtiyacımız var."

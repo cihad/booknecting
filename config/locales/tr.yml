@@ -12,22 +12,20 @@ tr:
   activerecord:
     errors:
       messages:
+        taken: "zaten alınmış. Farklı bir tane deneyin."
         blank: "Gerekli alan"
-      models:
-        user:
-          attributes:
-            username:
-              blank: "alanı gerekli."
-              taken: "zaten alınmış. Başka bir kullanıcı adı deneyin."
-            email:
-              invalid: "geçersiz."
-              taken: "ile daha önce kullanıcı kaydı yapılmış."
+        invalid: "Geçersiz"
+        confirmation: "%{attribute} ile uyuşmuyor."
     attributes:
       user:
+        email: "Eposta"
         username: "Kullanıcı adı"
         first_name: "Ad"
         last_name: "Soyad"
         password: "Parola"
+        password_confirmation: "Parola tekrar"
+        current_password: "Şimdiki parolanız"
+        remember_me: "Hatırla beni"
       book:
         name: "Kitap adı"
 
@@ -39,3 +37,17 @@ tr:
       title: "Yeni Kitap Ekle"
     edit:
       title: "Kitabı Düzenle"
+
+
+  users:
+    signin: "Giriş yap"
+    signup: "Kayıt ol"
+    signout: "Çıkış"
+    edit_user: "Kullanıcıyı düzenle"
+    leave_it_blank: "Değiştirmek istemiyorsanız boş bırakınız"
+    send_me_reset_password_instructions: "Parola sıfırlama talimatlarını gönder"
+    forgot_your_password: "Parolanızı mı unuttunuz?"
+    new_password: "Yeni parola"
+    change_my_password: "Parolamı değiştir"
+    change_your_password: "Parolanı değiştir"
+    confirm_your_new_password: "Yeni parola tekrar"

@@ -1,21 +1,28 @@
 <div class="row">
-  <div class="ui inverted menu">
-    <a class="item">
-      <i class="book icon"></i> Booknecting
-    </a>
-    <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search...">
-          <i class="search link icon"></i>
+  <div class="ui tiered inverted menu">
+    <div class="menu">
+      <a class="item">
+        <i class="book icon"></i> Booknecting
+      </a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" placeholder="Search...">
+            <i class="search link icon"></i>
+          </div>
         </div>
-      </div>
 
-      <% if user_signed_in? %>
-        <%= link_to t('users.signout'), destroy_user_session_path, method: :delete, class: "ui item"  %>
-      <% else %>
-        <%= link_to t('users.signin'), new_user_session_path, class: "ui item" %>
-      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to t('users.signout'), destroy_user_session_path, method: :delete, class: "ui item"  %>
+        <% else %>
+          <%= link_to t('users.signin'), new_user_session_path, class: "ui item" %>
+        <% end %>
+      </div>
     </div>
+
+    <% if devise_controller? %>
+      <%= render 'devise/shared/links' %>
+    <% end %>
+
   </div>
 </div>
