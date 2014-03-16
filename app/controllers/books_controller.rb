@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update]
+  before_action :set_book, only: [:show, :edit, :update, :read]
+
+  respond_to :js, only: :read
 
   def show
   end
@@ -27,6 +29,16 @@ class BooksController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def read
+    if current_user.books.exists? @book
+      current_user.books.delete @book
+    else
+      current_user.books << @book
+    end
+
+    respond_with @book
   end
 
   private

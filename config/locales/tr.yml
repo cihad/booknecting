@@ -51,3 +51,5 @@ tr:
     change_my_password: "Parolamı değiştir"
     change_your_password: "Parolanı değiştir"
     confirm_your_new_password: "Yeni parola tekrar"
+    books:
+      read: "Okudum"

@@ -1,1 +1,4 @@
-<%= page_title @book.name %>
+<%= page_title do %>
+  <%= @book.name %>
+  <%= read_button(@book) if user_signed_in? %>
+<% end %>
