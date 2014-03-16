@@ -22,4 +22,6 @@ group :test do
   gem "factory_girl_rails", "4.4.0"
   gem 'capybara', '2.2.1'
   gem 'launchy', '~> 2.4'
+  gem 'capybara-webkit', '~> 1.1'
+  gem 'database_cleaner', '~> 1.2'
 end
