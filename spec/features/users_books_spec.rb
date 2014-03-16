@@ -11,7 +11,7 @@ describe "Users Books" do
     expect {
       visit book_path book
       click_on I18n.t('users.books.read')
-      visit book_path book
+      sleep 0.2
     }.to change { user.books.count }.by(1)
   end
 
@@ -22,7 +22,7 @@ describe "Users Books" do
     expect {
       visit book_path book
       click_on I18n.t('users.books.read')
-      visit book_path book
+      sleep 0.2
     }.to change { user.books.count }.by(-1)
   end
 

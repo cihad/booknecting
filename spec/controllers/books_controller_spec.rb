@@ -95,4 +95,27 @@ describe BooksController do
       end
     end
   end
+
+  describe "PUT /books/:id/read" do
+    let(:user) { stub_model User }
+    before { allow(controller).to receive(:current_user).and_return(user) }
+
+    describe "when user read the book" do
+      it "increments read book count" do
+        expect {
+          put :read, { id: book.to_param, format: :js }, valid_session
+        }.to change { user.books.count }.by(1)
+      end
+    end
+
+    describe "when user didnt read the book" do
+      it "decrements read book count" do
+        user.books << book
+
+        expect {
+          put :read, { id: book.to_param, format: :js }, valid_session
+        }.to change { user.books.count }.by(-1)
+      end
+    end
+  end
 end
