@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  # Associations
+  has_and_belongs_to_many :books
+
   # user.first_name = 'Cihad'
   # user.last_name = 'Paksoy'
   # user.name == 'Cihad Paksoy' => true
