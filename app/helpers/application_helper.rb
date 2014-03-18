@@ -1,11 +1,19 @@
 module ApplicationHelper
 
-  def page_title(title = nil, &block)
+  def title(header = 'h1', title = nil, &block)
     if block_given?
-      content_tag :h1, class: "ui dividing header", &block 
+      content_tag header, class: "ui dividing header", &block 
     else
-      content_tag :h1, title, class: "ui dividing header"
+      content_tag header, title, class: "ui dividing header"
     end
+  end
+
+  def page_title title = nil, &block
+    title 'h1', title, &block
+  end
+
+  def sub_title title = nil, &block
+    title 'h3', title, &block
   end
 
 end
