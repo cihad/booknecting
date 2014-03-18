@@ -2,3 +2,19 @@
   <%= @book.name %>
   <%= read_button(@book) if user_signed_in? %>
 <% end %>
+
+<h3 class="ui left floated header">
+  <%= t '.who_read_it' %>
+</h3>
+
+<div class="ui right floated label">
+  <%= t '.read_count', count: @book.users.count %>
+</div>
+
+<div class="ui horizontal clearing icon divider">
+  <i class="circular heart icon"></i>
+</div>
+
+<div class="ui small images">
+  <%= render @book.users %>
+</div>

@@ -37,6 +37,9 @@ tr:
       title: "Yeni Kitap Ekle"
     edit:
       title: "Kitabı Düzenle"
+    show:
+      who_read_it: "Kimler okudu"
+      read_count: "%{count} kişi bu kitabı okudu."
 
 
   users:
