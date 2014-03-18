@@ -4,7 +4,7 @@ module UsersHelper
 
   def gravatar_for user
     link_to "#" do
-      image_tag gravatar_url_for(user), alt: user.username, size: "80",    
+      image_tag gravatar_url(user.email), alt: user.username, size: "80",    
                 class: "ui rounded image"
     end
   end
