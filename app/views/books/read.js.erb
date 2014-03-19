@@ -3,3 +3,9 @@
 <% else %>
   $('#<%= dom_id @book %>').removeClass('green');
 <% end %>
+
+$('.ui.right.floated.label')
+  .html('<%= j t('books.show.read_count', count: @book.users.count) %>')
+
+$('.images')
+  .html('<%= j render @book.users %>')
