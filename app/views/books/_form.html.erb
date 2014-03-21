@@ -1,4 +1,7 @@
-<%= simple_form_for @book do |f| %>
+<%= simple_form_for @book, html: { multipart: true } do |f| %>
   <%= f.input :name %>
+  <%= image_tag(@book.image_url) if @book.image? %>
+  <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
   <%= f.button :submit %>
 <% end %>

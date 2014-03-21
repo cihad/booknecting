@@ -9,6 +9,7 @@ describe "Books" do
       expect {
         visit new_book_path
         fill_in "book_name", with: "The Example Book"
+        attach_file "book_image", Rails.root.join('spec/support/images/01.png')
         click_on I18n.t('helpers.submit.create')
       }.to change(Book, :count).by(1)
 
@@ -19,6 +20,7 @@ describe "Books" do
       expect {
         visit edit_book_path(book)
         fill_in "book_name", with: "The Another Book"
+        attach_file "book_image", Rails.root.join('spec/support/images/01.png')
         click_on I18n.t('helpers.submit.update')
       }.to_not change(Book, :count)
 

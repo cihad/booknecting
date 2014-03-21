@@ -13,6 +13,21 @@ describe 'books/show.html.erb' do
     expect(rendered).to match /The Book/
   end
 
+  describe "image" do
+    it "when exists displays book image" do
+      allow(book).to receive(:image?).and_return(true)
+      allow(book).to receive(:image_url).and_return("image.png")
+      render
+      expect(rendered).to have_selector "img[width='260'][alt='The Book']"
+    end
+
+    it "when didnt exist displays book image" do
+      render
+      expect(rendered).to have_selector ".no-image"
+    end
+  end
+
+
   describe "when user signed in" do
     it "displays read button" do
       allow(view).to receive(:user_signed_in?).and_return(true)

@@ -9,5 +9,10 @@ FactoryGirl.define do
 
   factory :book do
     sequence(:name) { |n| "Lorem Ipsum Dolor Sit Amet #{n}" }
+
+    image do
+      r = rand(1..4)
+      File.new(Rails.root.join("spec/support/images/0#{r}.png"))
+    end
   end
 end

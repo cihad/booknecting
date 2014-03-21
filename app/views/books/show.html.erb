@@ -3,6 +3,41 @@
   <%= read_button(@book) if user_signed_in? %>
 <% end %>
 
+<div class="ui two column grid">
+  <div class="column">
+    <% if @book.image? %>
+      <%= image_tag @book.image_url, width: 260, alt: @book.name, title: @book.name %>
+    <% else %>
+      <div class="ui center aligned stacked no-image segment">
+        <%= t 'books.no_image' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="column">
+    <div class="ui list">
+      <div class="item">
+        <div class="header">ISBN</div>
+        34324235363
+      </div>
+      <div class="item">
+        <div class="header">Koleksiyon</div>
+        <a href="#">Risale-i Nur Külliyatı</a>
+      </div>
+      <div class="item">
+        <div class="header">Okunma sayısı</div>
+        2343 kişi okudu
+      </div>
+      <div class="item">
+        <div class="header">Etiketler</div>
+        2343 kişi okudu
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <h3 class="ui left floated header">
   <%= t '.who_read_it' %>
 </h3>

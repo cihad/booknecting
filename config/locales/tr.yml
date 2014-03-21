@@ -28,6 +28,7 @@ tr:
         remember_me: "Hatırla beni"
       book:
         name: "Kitap adı"
+        image: "Resim"
 
   books:
     messages:
