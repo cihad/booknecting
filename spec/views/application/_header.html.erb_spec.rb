@@ -7,6 +7,11 @@ describe "application/_header.html.erb" do
     expect(rendered).to have_selector 'a', text: 'Booknecting'
   end
 
+  it "links to home page" do
+    render
+    expect(rendered).to have_selector "a[href='/']"
+  end
+
   describe "when user signed in" do
     it "displays sign out link" do
       allow(view).to receive(:user_signed_in?).and_return(true)
