@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe User do
 
-  subject { FactoryGirl.build :user, username: "cihad" }
+  subject do
+    FactoryGirl.build :user,
+                      username: "cihad",
+                      first_name: "Cihad",
+                      last_name: "Paksoy"
+  end
 
   it { should be_valid }
 
@@ -10,6 +15,18 @@ describe User do
     expect {
       subject.save
     }.to change(User, :count).by(1)
+  end
+
+  describe "#view_name" do
+    it "first name and last name when it is" do
+      expect(subject.view_name).to eq("Cihad Paksoy")
+    end
+
+    it "first name and last name when it is not" do
+      subject.first_name = nil
+      subject.last_name = nil
+      expect(subject.view_name).to eq("cihad")
+    end
   end
 
   describe "username" do

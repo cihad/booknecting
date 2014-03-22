@@ -17,5 +17,9 @@ class User < ActiveRecord::Base
   def name
     "%s %s" % [first_name, last_name]
   end
+
+  def view_name
+    (first_name and last_name) ? name : username
+  end
 end
 
