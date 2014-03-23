@@ -4,8 +4,12 @@
   $('#<%= dom_id @book %>').removeClass('green');
 <% end %>
 
-$('.ui.right.floated.label')
+$('.book .ui.right.floated.label')
   .html('<%= j t('books.show.read_count', count: @book.users.count) %>')
+
+$('.self .ui.right.floated.label')
+  .html('<%= j t('users.books.read_count_html', count: current_user.books.count) %>')
+
 
 $('.images')
   .html('<%= j render @book.users %>')

@@ -1,5 +1,18 @@
+<% selfie = current_user == @user ? "self" : nil %>
+<% provide :body_class, "user #{selfie}" %>
+
 <%= page_title do %>
   <%= image_tag gravatar_url(@user.email, 30), class: "ui rounded left floated image" %>
   <%= @user.view_name %>
 <% end %>
 
+<%= sub_title do %>
+  <%= t('users.books.title') %>
+  <div class="ui right floated label">
+    <%= t('users.books.read_count_html', count: @user.books.count) %>
+  </div>
+<% end %>
+
+<div class="ui very relaxed divided animated list">
+  <%= render @user.books %>
+</div>

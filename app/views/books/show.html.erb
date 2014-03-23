@@ -1,3 +1,5 @@
+<% provide :body_class, "book" %>
+
 <%= page_title do %>
   <%= @book.name %>
   <%= read_button(@book) if user_signed_in? %>
@@ -6,7 +8,7 @@
 <div class="ui two column grid">
   <div class="column">
     <% if @book.image? %>
-      <%= image_tag @book.image_url, width: 260, alt: @book.name, title: @book.name %>
+      <%= image_tag @book.image.medium.url, width: 260, alt: @book.name, title: @book.name %>
     <% else %>
       <div class="ui center aligned stacked no-image segment">
         <%= t 'books.no_image' %>

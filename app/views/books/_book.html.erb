@@ -1,0 +1,9 @@
+<div class="item">
+  <%= image_tag book.image.medium.url, width: 32 %>
+  <div class="content">
+    <%= link_to book.name, book, class: "header" %>
+    <div class="description"><%= book.users.count %></div>
+  </div>
+
+  <%= read_button book %>
+</div>  

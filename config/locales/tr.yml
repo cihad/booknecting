@@ -57,3 +57,5 @@ tr:
     confirm_your_new_password: "Yeni parola tekrar"
     books:
       read: "Okudum"
+      title: "Okuduğu kitaplar"
+      read_count_html: "Okuduğu <strong>%{count}</strong> kitap var."
