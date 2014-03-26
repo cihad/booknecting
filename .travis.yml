@@ -1,3 +1,3 @@
 rvm:
   - 2.1.0
-script: xvfb-run rspec
+script: xvfb-run bundle exec rspec spec/
