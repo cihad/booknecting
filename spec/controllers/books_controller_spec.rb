@@ -8,6 +8,12 @@ describe BooksController do
   let!(:book) { FactoryGirl.create :book }
 
   it "GET /books" do
+    books = double
+    allow(Book).to receive(:search).with('sample').and_return(books)
+
+    get :index, { search: 'sample' }, valid_session
+
+    expect(assigns(:books)).to eq(books)
   end
 
   it "GET /books/:id" do

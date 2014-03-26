@@ -47,4 +47,18 @@ describe "Books" do
     end
   end
 
+  describe "search by name" do
+    it "finds correct books", js: true do
+      FactoryGirl.create :book, name: "Sample Book"
+      FactoryGirl.create :book, name: "Sample Magazine"
+      FactoryGirl.create :book, name: "Great Book"
+
+      visit root_path
+      fill_in "search", with: "sample"
+      page.execute_script("$('form.item').submit()")
+      expect(page).to have_content "Sample Book"
+      expect(page).to have_content "Sample Magazine"
+    end
+  end
+
 end

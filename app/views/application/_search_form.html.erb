@@ -1,0 +1,6 @@
+<%= form_tag root_path, method: :get, class: "item" do %>
+  <div class="ui icon input">
+    <%= search_field_tag :search, params[:search] %>
+    <i class="search link icon"></i>
+  </div>
+<% end %>

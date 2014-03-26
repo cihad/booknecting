@@ -3,6 +3,10 @@ class BooksController < ApplicationController
 
   respond_to :js, only: :read
 
+  def index
+    @books = Book.search(params[:search])
+  end
+
   def show
   end
 
