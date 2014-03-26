@@ -96,6 +96,10 @@ GEM
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pg_search (0.7.3)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.3)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -191,6 +195,7 @@ DEPENDENCIES
   launchy (~> 2.4)
   mini_magick (~> 3.7)
   pg
+  pg_search (~> 0.7)
   pry (~> 0.9)
   rails (= 4.0.2)
   rspec-rails (~> 3.0.0.beta)

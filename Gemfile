@@ -13,6 +13,7 @@ gem 'semantic-ui-sass', '~> 0.13.0.0'
 gem 'simple_form', '~> 3.0'
 gem 'carrierwave', '~> 0.10'
 gem 'mini_magick', '~> 3.7'
+gem 'pg_search', '~> 0.7'
 
 group :development, :test do
   gem 'faker', '1.2.0'
