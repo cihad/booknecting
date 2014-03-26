@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+  # Includes
+  include PgSearch
 
   # Validates
   validates :name, presence: true
@@ -8,5 +10,8 @@ class Book < ActiveRecord::Base
 
   # Image Attach
   mount_uploader :image, BookImageUploader
+
+  # Postgresql Search
+  pg_search_scope :search_by_name, against: :name, using: :trigram
   
 end
