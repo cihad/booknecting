@@ -3,7 +3,7 @@ require 'digest/md5'
 module UsersHelper
 
   def gravatar_for user, size = 80
-    link_to "#" do
+    link_to user do
       image_tag gravatar_url(user.email, size), alt: user.username, size: "80",    
                 class: "ui rounded image"
     end
