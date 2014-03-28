@@ -36,11 +36,7 @@ class BooksController < ApplicationController
   end
 
   def read
-    if current_user.books.exists? @book
-      current_user.books.delete @book
-    else
-      current_user.books << @book
-    end
+    current_user.read?(@book) ? current_user.unread(@book) : current_user.read(@book)
 
     respond_with @book
   end

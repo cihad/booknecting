@@ -104,23 +104,26 @@ describe BooksController do
 
   describe "PUT /books/:id/read" do
     let(:user) { stub_model User }
-    before { allow(controller).to receive(:current_user).and_return(user) }
 
-    describe "when user read the book" do
-      it "increments read book count" do
-        expect {
-          put :read, { id: book.to_param, format: :js }, valid_session
-        }.to change { user.books.count }.by(1)
-      end
+    before do
+      allow(controller).to receive(:current_user).and_return(user)
     end
 
     describe "when user didnt read the book" do
-      it "decrements read book count" do
-        user.books << book
+      it "changes read? status from false to true" do
+        expect {
+          put :read, { id: book.to_param, format: :js }, valid_session
+        }.to change { user.read? book }.from(false).to(true)
+      end
+    end
+
+    describe "when user read the book" do
+      it "changes read? status from true to false" do
+        user.read book
 
         expect {
           put :read, { id: book.to_param, format: :js }, valid_session
-        }.to change { user.books.count }.by(-1)
+        }.to change { user.read? book }.from(true).to(false)
       end
     end
   end

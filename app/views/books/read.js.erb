@@ -1,4 +1,4 @@
-<% if current_user.books.exists? @book %>
+<% if current_user.read? @book %>
   $('#<%= dom_id @book %>').addClass('green');
 <% else %>
   $('#<%= dom_id @book %>').removeClass('green');

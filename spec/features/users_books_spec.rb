@@ -17,7 +17,7 @@ describe "Users Books" do
     end
 
     it "descrements read book count", js: true do
-      user.books << book
+      user.read book
       login_as user, scope: :user
 
       expect {
@@ -47,7 +47,7 @@ describe "Users Books" do
 
   describe "on user page" do
     it "when click read button on user page increments read book count", js: true do
-      user.books << book
+      user.read book
       login_as user, scope: :user
 
       visit user_path user

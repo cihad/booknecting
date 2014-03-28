@@ -27,7 +27,7 @@ describe BooksHelper do
       end
 
       it "when user read the book" do
-        user.books << book
+        user.read book
         expect(helper.read_button(book)).to have_selector '.green',
                                             text: I18n.t('users.books.read')
       end

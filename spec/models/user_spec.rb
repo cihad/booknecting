@@ -69,4 +69,53 @@ describe User do
     subject.last_name = "Paksoy"
     expect(subject.name).to eq("Cihad Paksoy")
   end
+
+  describe "#read" do
+    let(:book) { FactoryGirl.create :book }
+
+    before do
+      subject.save
+    end
+
+    it "changes to books count" do
+      expect {
+        subject.read book
+      }.to change { subject.books.count }.by(1)
+    end
+    
+    it "changes to likes book" do
+      expect {
+        subject.read book
+      }.to change { subject.likes? book }.from(false).to(true)
+    end
+  end
+
+  describe "#unread" do
+    let(:book) { FactoryGirl.create :book }
+
+    before do
+      subject.save
+      subject.read book
+    end
+
+    it "decrements to books count" do
+      expect {
+        subject.unread book
+      }.to change { subject.books.count }.by(-1)
+    end
+    
+    it "changes to likes book" do
+      expect {
+        subject.unread book
+      }.to change { subject.likes? book }.from(true).to(false)
+    end
+  end
+
+  it "#read?" do
+    book = FactoryGirl.create :book
+    subject.save
+    subject.read book
+    expect(subject.read? book).to be_truthy
+  end
+
 end
