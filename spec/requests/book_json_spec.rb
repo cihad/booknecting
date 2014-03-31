@@ -8,7 +8,7 @@ describe "Book JSON" do
   subject { book }
 
   before do
-    book.users << user
+    user.read book
     get book_path(subject, format: :json)
   end
 

@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
-  # Associations
-  has_and_belongs_to_many :books
-
   # Recommendable
   recommends :books
 
@@ -26,17 +23,19 @@ class User < ActiveRecord::Base
   end
 
   def read book
-    books << book
     like book
   end
 
   def unread book
-    books.delete book
     unlike book
   end
 
   def read? book
-    books.exists?(book) and likes?(book)
+    likes? book
+  end
+
+  def books
+    likes
   end
 end
 

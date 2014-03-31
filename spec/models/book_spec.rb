@@ -39,4 +39,11 @@ describe Book do
     end
   end
 
+  it "#users" do
+    liked_by = double
+    allow(subject).to receive(:liked_by).and_return(liked_by)
+
+    expect(subject.users).to eq(liked_by)
+  end
+
 end
