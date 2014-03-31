@@ -13,7 +13,7 @@ describe "Books" do
         click_on I18n.t('helpers.submit.create')
       }.to change(Book, :count).by(1)
 
-      expect(page).to have_content I18n.t('books.messages.created')
+      expect(page).to have_text I18n.t('books.messages.created')
     end
 
     it "edit existing book" do

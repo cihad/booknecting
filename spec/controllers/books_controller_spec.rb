@@ -53,8 +53,8 @@ describe BooksController do
 
       it "assigns a newly created book as @book" do
         post :create, {:book => valid_attributes}, valid_session
-        assigns(:book).should be_a(Book)
-        assigns(:book).should be_persisted
+        expect(assigns(:book)).to be_a(Book)
+        expect(assigns(:book)).to be_persisted
       end
     end
 
@@ -62,13 +62,13 @@ describe BooksController do
       it "assigns a newly created but unsaved book as @book" do
         allow_any_instance_of(Book).to receive(:save).and_return(false)
         post :create, {:book => { "name" => "" }}, valid_session
-        assigns(:book).should be_a_new(Book)
+        expect(assigns(:book)).to be_a_new(Book)
       end
 
       it "re-renders the 'new' template" do
         allow_any_instance_of(Book).to receive(:save).and_return(false)
         post :create, {:book => { "name" => "" }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -78,26 +78,26 @@ describe BooksController do
       it "updates the requested book" do
         attrs = valid_attributes
         put :update, {:id => book.to_param, :book => attrs}, valid_session
-        book.reload.name.should eq(attrs[:name])
+        expect(book.reload.name).to eq(attrs[:name])
       end
 
       it "assigns the requested book as @book" do
         put :update, {:id => book.to_param, :book => valid_attributes}, valid_session
-        assigns(:book).should eq(book)
+        expect(assigns(:book)).to eq(book)
       end
     end
 
     describe "with invalid params" do
       it "assigns the book as @book" do
         put :update, {:id => book.to_param, :book => invalid_attributes}, valid_session
-        assigns(:book).should eq(book)
+        expect(assigns(:book)).to eq(book)
       end
 
       it "re-renders the 'edit' template" do
         allow_any_instance_of(Book).to receive(:update).and_return(false)
         allow(controller).to receive(:book_params)
         put :update, {:id => book.to_param }, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
