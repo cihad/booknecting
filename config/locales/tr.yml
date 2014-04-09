@@ -55,6 +55,7 @@ tr:
     change_my_password: "Parolamı değiştir"
     change_your_password: "Parolanı değiştir"
     confirm_your_new_password: "Yeni parola tekrar"
+    similar_users: "Bu kişiyle en çok ortak kitap okuyanlar"
     books:
       read: "Okudum"
       title: "Okuduğu kitaplar"

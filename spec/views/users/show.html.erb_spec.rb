@@ -3,12 +3,18 @@ require "spec_helper"
 describe "users/show.html.erb" do
 
   let(:user) {  stub_model User, email: "email@example.org" }
+  let(:similar_raters) do
+    [ stub_model(User, email: "user_1@example.org"),
+      stub_model(User, email: "user_2@example.org")]
+  end
 
   before do
     allow(user).to receive(:view_name).and_return("Cihad Paksoy")
     allow(view).to receive(:gravatar_url).and_return("http://example.org/image.jpg")
+    allow(user).to receive(:similar_raters).and_return(similar_raters)
     assign(:user, user)
     stub_template "books/_book.html.erb" => "<%= book.name %>"
+    stub_template "users/_user.html.erb" => "<%= user.email %>"
     books = [stub_model(Book, name: "The Book"),
              stub_model(Book, name: "The Another Book")]
     allow(user).to receive(:books).and_return(books)
@@ -30,6 +36,15 @@ describe "users/show.html.erb" do
   it "displays user books" do
     expect(rendered).to have_content("The Book")
     expect(rendered).to have_content("The Another Book")
+  end
+
+  it "displays similar users title" do
+    expect(rendered).to have_content(I18n.t('users.similar_users'))
+  end
+
+  it "displays other users similar to user" do
+    expect(rendered).to have_content("user_1@example.org")
+    expect(rendered).to have_content("user_2@example.org")
   end
 
 end
