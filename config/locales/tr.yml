@@ -34,6 +34,8 @@ tr:
     messages:
       created: "Kitap başarıyla kaydedildi."
       updated: "Kitap başarıyla güncellendi."
+    index:
+      top10: "Top10 Kitaplar"
     new:
       title: "Yeni Kitap Ekle"
     edit:

@@ -4,7 +4,11 @@ class BooksController < ApplicationController
   respond_to :js, only: :read
 
   def index
-    @books = Book.search(params[:search])
+    @books = if params[:search].present?
+      Book.search(params[:search])
+    else
+      Book.top(count: 10)
+    end
   end
 
   def show

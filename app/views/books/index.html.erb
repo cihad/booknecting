@@ -1,3 +1,4 @@
+<%= sub_title t('books.index.top10') unless params[:search].present? %>
 <div class="ui very relaxed divided animated list">
   <%= render @books %>
 </div>

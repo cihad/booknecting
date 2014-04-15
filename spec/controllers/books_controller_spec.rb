@@ -7,13 +7,27 @@ describe BooksController do
   let(:invalid_attributes) { valid_attributes.merge(name: "") }
   let!(:book) { FactoryGirl.create :book }
 
-  it "GET /books" do
-    books = double
-    allow(Book).to receive(:search).with('sample').and_return(books)
+  describe "GET /books" do
 
-    get :index, { search: 'sample' }, valid_session
+    it "params search exists" do
+      books = double
+      allow(Book).to receive(:search).with('sample').and_return(books)
 
-    expect(assigns(:books)).to eq(books)
+      get :index, { search: 'sample' }, valid_session
+
+      expect(assigns(:books)).to eq(books)
+    end
+
+    it "params search doesnt exist" do
+      books = double
+      allow(Book).to receive(:top).with(count: 10).and_return(books)
+
+      get :index, { }, valid_session
+      
+      expect(assigns(:books)).to eq(books)
+    end
+
+    
   end
 
   it "GET /books/:id" do
