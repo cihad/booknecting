@@ -43,6 +43,7 @@ tr:
     show:
       who_read_it: "Kimler okudu"
       read_count: "%{count} kişi bu kitabı okudu."
+      tags: "Etiketler"
 
 
   users:

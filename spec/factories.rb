@@ -15,4 +15,8 @@ FactoryGirl.define do
       File.new(Rails.root.join("spec/support/images/0#{r}.png"))
     end
   end
+
+  factory :tag do
+    sequence(:name) { |n| "Tag #{n}" }
+  end
 end

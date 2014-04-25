@@ -5,4 +5,5 @@ Booknecting::Application.routes.draw do
   resources :books, except: :destroy do
     put :read, on: :member
   end
+  resources :tags, only: [:show, :create]
 end
