@@ -1,0 +1,8 @@
+<% if @is_new_added %>
+  $('#tags').append('<%= j render @tag %>')
+<% else %>
+  $("#<%= dom_id @tag %>").addClass("red").delay(300).queue(function(){
+    $(this).removeClass("red").dequeue();
+  });
+<% end %>
+$('#new_tag').trigger('reset');

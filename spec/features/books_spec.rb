@@ -61,4 +61,20 @@ describe "Books" do
     end
   end
 
+  it "adds tag", js: true do
+    visit book_path(book)
+    fill_in "tag_name", with: "Example Tag"
+    click_on I18n.t('helpers.submit.create')
+    expect(page).to have_content "example tag"
+  end
+
+  it "removes tag", js: true do
+    tag = FactoryGirl.create :tag, name: "Removeble Tag"
+    book.add_tag tag
+
+    visit book_path(book)
+    page.execute_script("$('#tag_#{tag.id} .remove').click()")
+    expect(page).to_not have_content "removeble tag"
+  end
+
 end

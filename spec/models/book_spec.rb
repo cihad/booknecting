@@ -46,4 +46,31 @@ describe Book do
     expect(subject.users).to eq(liked_by)
   end
 
+  it "#tags" do
+    expect(subject.tags).to be
+  end
+
+  it "#tag_exists?" do
+    tag = double
+    allow(subject).to receive_message_chain(:tags, :exists?).and_return(true)
+    expect(subject.tag_exists?(tag)).to be_truthy
+  end
+
+  it "#add_tag" do
+    tag = FactoryGirl.create :tag
+    subject.save
+    expect {
+      subject.add_tag tag
+    }.to change { subject.tags.count }.by(1)
+  end
+
+  it "#remove_tag" do
+    tag = FactoryGirl.create :tag
+    subject.save
+    subject.add_tag tag
+    expect {
+      subject.remove_tag tag
+    }.to change { subject.tags.count }.by(-1)
+  end
+
 end

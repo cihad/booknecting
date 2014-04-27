@@ -1,0 +1,9 @@
+<div class="ui label" id="<%= dom_id tag %>">
+  <%= link_to tag.name, tag %>
+  <%= link_to [@book, tag],
+              method: :delete,
+              remote: true,
+              class: "remove link" do %>
+    <i class="delete icon"></i>
+  <% end %>
+</div>

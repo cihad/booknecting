@@ -59,4 +59,12 @@ describe 'books/show.html.erb' do
     end
   end
 
+  it "displays tags" do
+    tag = stub_model(Tag, name: "Example Tag")
+    tags = [tag]
+    allow(book).to receive(:tags).and_return(tags)
+    render
+    expect(rendered).to have_selector "a", text: "Example Tag"
+  end
+  
 end

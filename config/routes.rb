@@ -4,6 +4,7 @@ Booknecting::Application.routes.draw do
   devise_for :users
   resources :books, except: :destroy do
     put :read, on: :member
+    resources :tags, only: [:create, :destroy]
   end
-  resources :tags, only: [:show, :create]
+  resources :tags, only: :show
 end

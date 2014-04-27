@@ -14,7 +14,7 @@ describe "Tag JSON" do
   end
 
   it "has name" do
-    expect(JSON.parse(response.body)["name"]).to eq("Example")
+    expect(JSON.parse(response.body)["name"]).to eq("example")
   end
 
 end

@@ -19,20 +19,20 @@
   <div class="column">
     <div class="ui list">
       <div class="item">
-        <div class="header">ISBN</div>
-        34324235363
-      </div>
-      <div class="item">
-        <div class="header">Koleksiyon</div>
-        <a href="#">Risale-i Nur Külliyatı</a>
-      </div>
-      <div class="item">
         <div class="header">Okunma sayısı</div>
-        2343 kişi okudu
+        <%= @book.users.count %>
       </div>
       <div class="item">
         <div class="header">Etiketler</div>
-        2343 kişi okudu
+          <div id="tags">
+            <%= render @book.tags %>
+          </div>
+
+          <%= simple_form_for [@book, Tag.new], remote: true do |f| %>
+            <%= f.input :name, label: false %>
+            <%= f.button :submit %>
+          <% end %>
+        </ul>
       </div>
     </div>
 
