@@ -15,14 +15,9 @@ describe "devise/registrations/new.html.erb" do
       text: I18n.t('activerecord.attributes.user.username')
   end
 
-  it "displays first name field" do
+  it "displays name field" do
     expect(rendered).to have_selector 'label',
-      text: I18n.t('activerecord.attributes.user.first_name')
-  end
-
-  it "displays last name field" do
-    expect(rendered).to have_selector 'label',
-      text: I18n.t('activerecord.attributes.user.last_name')
+      text: I18n.t('activerecord.attributes.user.name')
   end
 
   it "displays email field" do

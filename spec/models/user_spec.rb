@@ -5,8 +5,7 @@ describe User do
   subject do
     FactoryGirl.build :user,
                       username: "cihad",
-                      first_name: "Cihad",
-                      last_name: "Paksoy"
+                      name: "Cihad Paksoy"
   end
 
   it { should be_valid }
@@ -18,13 +17,12 @@ describe User do
   end
 
   describe "#view_name" do
-    it "first name and last name when it is" do
+    it "name when it is" do
       expect(subject.view_name).to eq("Cihad Paksoy")
     end
 
-    it "first name and last name when it is not" do
-      subject.first_name = nil
-      subject.last_name = nil
+    it "name when it is not" do
+      subject.name = nil
       expect(subject.view_name).to eq("cihad")
     end
   end
@@ -56,18 +54,8 @@ describe User do
     end
   end
 
-  it "#first_name" do
-    subject.first_name
-  end
-
-  it "#last_name" do
-    subject.last_name
-  end
-
   it "#name" do
-    subject.first_name = "Cihad"
-    subject.last_name = "Paksoy"
-    expect(subject.name).to eq("Cihad Paksoy")
+    expect(subject.name).to be
   end
 
   it "#read changes to books count" do

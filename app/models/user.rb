@@ -11,15 +11,8 @@ class User < ActiveRecord::Base
   # Recommendable
   recommends :books
 
-  # user.first_name = 'Cihad'
-  # user.last_name = 'Paksoy'
-  # user.name == 'Cihad Paksoy' => true
-  def name
-    "%s %s" % [first_name, last_name]
-  end
-
   def view_name
-    (first_name and last_name) ? name : username
+    name || username
   end
 
   def read book

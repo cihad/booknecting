@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    attrs = [:username, :first_name, :last_name]
+    attrs = [:username, :name]
     devise_parameter_sanitizer.for(:sign_up).concat attrs
     devise_parameter_sanitizer.for(:account_update).concat attrs
   end
