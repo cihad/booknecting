@@ -8,6 +8,10 @@ class Tag < ActiveRecord::Base
   # Callbacks
   before_validation :format_name
 
+  def similar_users
+    similar_raters(100).select { |n| n.actor_type == "User" }
+  end
+
   private
     def format_name
       self.name = name.downcase

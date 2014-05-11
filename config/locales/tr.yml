@@ -62,3 +62,7 @@ tr:
       read: "Okudum"
       title: "Okuduğu kitaplar"
       read_count_html: "Okuduğu <strong>%{count}</strong> kitap var."
+
+  tags:
+    show:
+      similar_users: "'%{tag}' etiketindeki kitapları en çok okuyanlar"

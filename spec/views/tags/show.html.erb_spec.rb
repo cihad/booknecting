@@ -6,8 +6,10 @@ describe "tags/show.html.erb" do
 
   before do
     assign(:tag, tag)
+    allow(tag).to receive(:similar_users).and_return([stub_model(Node)])
     allow(tag).to receive(:books).and_return([stub_model(Book, name: "Lemalar")])
     stub_template 'books/_book.html.erb' => '<%= book.name %>'
+    stub_template 'nodes/_node.html.erb' => "Similar Users"
     render
   end
 
@@ -17,6 +19,14 @@ describe "tags/show.html.erb" do
 
   it "displays books" do
     expect(rendered).to match "Lemalar"
+  end
+
+  it "displays tag similarities title" do
+    expect(rendered).to match I18n.t('tags.show.similar_users')
+  end
+
+  it "displays tag similarities" do
+    expect(rendered).to match "Similar Users"
   end
 
 end

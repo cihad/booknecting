@@ -31,4 +31,11 @@ describe Tag do
     }.to change { subject.name }.from("Ali Ata Bak").to("ali ata bak")
   end
 
+  it "#similar_users" do
+    similar_users = double 
+    allow(subject).to receive_message_chain(:similar_raters, :select).and_return(similar_users)
+
+    expect(subject.similar_users).to eq(similar_users)
+  end
+
 end

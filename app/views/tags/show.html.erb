@@ -1,5 +1,16 @@
-<%= page_title @tag.name %>
+<%= page_title do %>
+  <i class="tag icon"></i>
+  <%= @tag.name %>
+<% end %>
+
+
 
 <div class="ui very relaxed divided animated list">
   <%= render @tag.books %>
+</div>
+
+<%= sub_title t('.similar_users', tag: @tag.name) %>
+
+<div class="ui small images">
+  <%= render @tag.similar_users %>
 </div>
