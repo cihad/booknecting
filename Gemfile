@@ -19,6 +19,7 @@ gem 'recommendable', '~> 2.1'
 group :development, :test do
   gem 'pry', '~> 0.9'
   gem 'pry-rescue', '~> 1.4'
+  gem 'pry-stack_explorer'
   gem 'faker', '1.2.0'
 end
 
