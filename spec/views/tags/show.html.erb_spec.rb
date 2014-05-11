@@ -22,7 +22,7 @@ describe "tags/show.html.erb" do
   end
 
   it "displays tag similarities title" do
-    expect(rendered).to match I18n.t('tags.show.similar_users')
+    expect(rendered).to match escape_once(I18n.t('tags.show.similar_users', tag: 'risale-i nur'))
   end
 
   it "displays tag similarities" do
