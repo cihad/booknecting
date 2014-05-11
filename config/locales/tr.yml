@@ -30,6 +30,7 @@ tr:
         image: "Resim"
 
   books:
+    read_count_html: "<b>%{count}</b> okunma"
     messages:
       created: "Kitap başarıyla kaydedildi."
       updated: "Kitap başarıyla güncellendi."
