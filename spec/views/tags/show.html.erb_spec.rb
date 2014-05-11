@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "tags/show.html.erb" do
 
-  let(:tag) { stub_model Tag, name: "risale-i nur" }
+  let(:tag) { FactoryGirl.build_stubbed Tag, name: "risale-i nur" }
 
   before do
     assign(:tag, tag)

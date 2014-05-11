@@ -2,9 +2,9 @@ require "spec_helper"
 
 describe "books/_book.html.erb" do
   
-  let(:book) { stub_model Book, name: "The Book" }
+  let(:book) { FactoryGirl.build_stubbed Book, name: "The Book" }
   let(:image_url) { "http://example.org/image.jpg" }
-  let(:users) { [stub_model(User), stub_model(User)] }
+  let(:users) { [FactoryGirl.build_stubbed(User), FactoryGirl.build_stubbed(User)] }
 
   before do
     image = double(medium: double(url: image_url))

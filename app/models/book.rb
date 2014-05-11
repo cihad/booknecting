@@ -2,9 +2,6 @@ class Book < ActiveRecord::Base
   # Includes
   include PgSearch
 
-  # Associations
-  has_and_belongs_to_many :tags
-
   # Validates
   validates :name, presence: true
 
@@ -19,19 +16,23 @@ class Book < ActiveRecord::Base
   end
 
   def users
-    liked_by
+    liked_by.includes(:actor).where(actor_type: "User").map(&:actor)
+  end
+
+  def tags
+    liked_by.includes(:actor).where(actor_type: "Tag").map(&:actor)
   end
 
   def tag_exists? tag
-    tags.exists? tag
+    tag.read? self
   end
 
   def add_tag tag
-    tags << tag
+    tag.read self
   end
 
   def remove_tag tag
-    tags.destroy tag
+    tag.unread self
   end
   
 end

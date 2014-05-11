@@ -17,8 +17,9 @@ gem 'pg_search', '~> 0.7'
 gem 'recommendable', '~> 2.1'
 
 group :development, :test do
-  gem 'faker', '1.2.0'
   gem 'pry', '~> 0.9'
+  gem 'pry-rescue', '~> 1.4'
+  gem 'faker', '1.2.0'
 end
 
 group :test do

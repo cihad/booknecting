@@ -117,7 +117,7 @@ describe BooksController do
   end
 
   describe "PUT /books/:id/read" do
-    let(:user) { stub_model User }
+    let(:user) { FactoryGirl.create User }
 
     before do
       allow(controller).to receive(:current_user).and_return(user)

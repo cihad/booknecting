@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  include Readable  
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,27 +10,13 @@ class User < ActiveRecord::Base
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
-  # Recommendable
-  recommends :books
-
   def view_name
     name || username
   end
 
-  def read book
-    like book
+  def similar_users
+    similar_raters(100).select { |n| n.actor_type == "User" }
   end
 
-  def unread book
-    unlike book
-  end
-
-  def read? book
-    likes? book
-  end
-
-  def books
-    likes
-  end
 end
 

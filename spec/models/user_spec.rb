@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe User do
-
   subject do
     FactoryGirl.build :user,
                       username: "cihad",
                       name: "Cihad Paksoy"
   end
+
+  it_behaves_like "Readable"
 
   it { should be_valid }
 
@@ -14,6 +15,10 @@ describe User do
     expect {
       subject.save
     }.to change(User, :count).by(1)
+  end
+
+  it "#name" do
+    expect(subject.name).to be
   end
 
   describe "#view_name" do
@@ -54,51 +59,9 @@ describe User do
     end
   end
 
-  it "#name" do
-    expect(subject.name).to be
-  end
-
-  it "#read changes to books count" do
-    book = FactoryGirl.create :book
-    subject.save
-    
-    expect {
-      subject.read book
-    }.to change { subject.read? book }.from(false).to(true)
-  end
-  
-
-  describe "#unread" do
-    let(:book) { FactoryGirl.create :book }
-
-    before do
-      subject.save
-      subject.read book
-    end
-
-    it "decrements to books count" do
-      expect {
-        subject.unread book
-      }.to change { subject.books.count }.by(-1)
-    end
-    
-    it "changes to likes book" do
-      expect {
-        subject.unread book
-      }.to change { subject.likes? book }.from(true).to(false)
-    end
-  end
-
-  it "#read?" do
-    book = FactoryGirl.create :book
-    subject.save
-    subject.read book
-    expect(subject.read? book).to be_truthy
-  end
-
-  it "#books" do
-    allow(subject).to receive(:likes).and_return(likes = double)
-    expect(subject.books).to eq(likes)
+  it "#similar_users" do
+    allow(subject).to receive_message_chain(:similar_raters, :select).and_return(similar_users = double)
+    allow(subject).to receive(:similar_users).and_return(similar_users) 
   end
 
 end

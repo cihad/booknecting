@@ -2,11 +2,12 @@ require "spec_helper"
 
 describe "users/show.html.erb" do
 
-  let(:user) {  stub_model User, email: "email@example.org" }
-  let(:similar_raters) do
-    [ stub_model(User, email: "user_1@example.org"),
-      stub_model(User, email: "user_2@example.org")]
-  end
+  let(:user) {  FactoryGirl.create :user, email: "email@example.org" }
+
+  let(:similar_user_1) { FactoryGirl.create(:user) }
+  let(:similar_user_2) { FactoryGirl.create(:user) }
+
+  let(:similar_raters) { [similar_user_1.node, similar_user_2.node] }
 
   before do
     allow(user).to receive(:view_name).and_return("Cihad Paksoy")
@@ -43,8 +44,8 @@ describe "users/show.html.erb" do
   end
 
   it "displays other users similar to user" do
-    expect(rendered).to have_content("user_1@example.org")
-    expect(rendered).to have_content("user_2@example.org")
+    expect(rendered).to have_content(similar_user_1.email)
+    expect(rendered).to have_content(similar_user_2.email)
   end
 
 end

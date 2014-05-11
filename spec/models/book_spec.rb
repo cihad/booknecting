@@ -40,19 +40,28 @@ describe Book do
   end
 
   it "#users" do
-    liked_by = double
-    allow(subject).to receive(:liked_by).and_return(liked_by)
+    users = double
+    allow(subject).to receive(:liked_by).and_return(liked_by = double)
+    allow(liked_by).to receive(:includes).with(:actor).and_return(includes = double)
+    allow(includes).to receive(:where).with(actor_type: "User").and_return(where = double)
+    allow(where).to receive(:map).and_return(users)
 
-    expect(subject.users).to eq(liked_by)
+    expect(subject.users).to eq(users)
   end
 
   it "#tags" do
-    expect(subject.tags).to be
+    tags = double
+    allow(subject).to receive(:liked_by).and_return(liked_by = double)
+    allow(liked_by).to receive(:includes).with(:actor).and_return(includes = double)
+    allow(includes).to receive(:where).with(actor_type: "Tag").and_return(where = double)
+    allow(where).to receive(:map).and_return(tags)
+    
+    expect(subject.tags).to eq(tags)
   end
 
   it "#tag_exists?" do
     tag = double
-    allow(subject).to receive_message_chain(:tags, :exists?).and_return(true)
+    allow(tag).to receive(:read?).with(subject).and_return(true)
     expect(subject.tag_exists?(tag)).to be_truthy
   end
 

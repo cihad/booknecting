@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Tag do
+  it_behaves_like "Readable"
 
   subject { FactoryGirl.build :tag, name: "Tag"  }
 
@@ -13,10 +14,6 @@ describe Tag do
       subject.name = ""
       subject.save
     }.to_not change(Tag, :count)
-  end
-
-  it "#books" do
-    expect(subject.books).to be
   end
 
   it "name is uniquenes" do

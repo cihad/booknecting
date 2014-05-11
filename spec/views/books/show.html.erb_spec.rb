@@ -43,7 +43,7 @@ describe 'books/show.html.erb' do
     end
 
     it "displays people" do
-      users = [stub_model(User)]
+      users = [FactoryGirl.build_stubbed(User)]
       allow(book).to receive(:users).and_return(users)
       stub_template "users/_user.html.erb" => "The User Who Read It"
       render
@@ -52,7 +52,7 @@ describe 'books/show.html.erb' do
     end
 
     it "displays read count" do
-      users = [stub_model(User)]
+      users = [FactoryGirl.build_stubbed(User)]
       allow(book).to receive(:users).and_return(users)
       render
       expect(rendered).to match I18n.t('books.show.read_count', count: "1")
@@ -60,7 +60,7 @@ describe 'books/show.html.erb' do
   end
 
   it "displays tags" do
-    tag = stub_model(Tag, name: "Example Tag")
+    tag = FactoryGirl.build_stubbed(Tag, name: "Example Tag")
     tags = [tag]
     allow(book).to receive(:tags).and_return(tags)
     render
