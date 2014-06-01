@@ -27,7 +27,7 @@ describe "AmazonBook" do
     visit book_path("ASINEXAMPLEASIN")
     expect {
       click_on I18n.t('users.books.read')            
-      sleep 0.2
+      sleep 1
     }.to change(Book, :count).by(1)
   end
 
