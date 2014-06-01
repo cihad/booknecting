@@ -13,6 +13,10 @@ describe Book do
     expect(subject).to_not be_valid
   end
 
+  it "#amazon_asin" do
+    expect(subject.amazon_asin).to be
+  end
+
   it ".search_by_name" do
     subject.save
     expect(described_class.search_by_name("lem")).to include(subject)
@@ -26,16 +30,19 @@ describe Book do
 
   describe ".search" do
 
-    it "if params exists" do
-      books = double
+    it "if text present" do
       search_text = double
-      allow(described_class).to receive(:search_by_name).with(search_text).and_return(books)
-      expect(described_class.search(search_text)).to eq(books)
+      book_1 = double
+      book_2 = double
+      allow(described_class).to receive(:search_by_name).with(search_text).and_return([book_1])
+      allow(AmazonBook).to receive(:search).with(search_text).and_return([book_2])
+      expect(described_class.search(search_text)).to eq([book_1, book_2])
     end
 
-    it "if doesnt params exist" do
+    it "if doesnt text present" do
       books = double
-      expect(described_class.search()).to be_empty
+      allow(described_class).to receive(:top).with(count: 10).and_return(books)
+      expect(described_class.search()).to eq(books)
     end
   end
 
@@ -80,6 +87,10 @@ describe Book do
     expect {
       subject.remove_tag tag
     }.to change { subject.tags.count }.by(-1)
+  end
+
+  it "#amazon_book" do
+    expect(subject).to_not be_amazon_book
   end
 
 end

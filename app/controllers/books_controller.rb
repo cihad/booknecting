@@ -1,17 +1,19 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :read]
+  before_action :set_book, only: [:edit, :update, :read]
 
   respond_to :js, only: :read
 
   def index
-    @books = if params[:search].present?
-      Book.search(params[:search])
-    else
-      Book.top(count: 10)
-    end
+    @books = Book.search(params[:search])
   end
 
   def show
+    @book = if params[:id].start_with?('ASIN')
+      Book.find_by(amazon_asin: AmazonBook.unless_asin_prefix(params[:id])) ||
+        AmazonBook.find(params[:id])
+    else
+      Book.find(params[:id])
+    end
   end
 
   def new

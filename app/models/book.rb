@@ -12,7 +12,12 @@ class Book < ActiveRecord::Base
   pg_search_scope :search_by_name, against: :name, ignoring: :accents, using: :trigram
 
   def self.search text = ""
-    text.present? ? search_by_name(text) : []
+    Node
+    if text.present?
+      (search_by_name(text) + AmazonBook.search(text)).uniq
+    else
+      top(count: 10)
+    end
   end
 
   def users
@@ -33,6 +38,10 @@ class Book < ActiveRecord::Base
 
   def remove_tag tag
     tag.unread self
+  end
+
+  def amazon_book?
+    false
   end
   
 end

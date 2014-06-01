@@ -17,4 +17,18 @@ describe ApplicationHelper do
     expect(helper.sub_title { 'The Title' }).to match /The Title/
   end
 
+  it "#amazon_book_path" do
+    path = double
+    obj = double
+    allow(helper).to receive(:book_path).with(obj).and_return(path)
+    expect(helper.amazon_book_path(obj)).to eql(path)
+  end
+
+  it "#amazon_book_tags_path" do
+    path = double
+    obj = double
+    allow(helper).to receive(:book_tags_path).with(obj).and_return(path)
+    expect(helper.amazon_book_tags_path(obj)).to eql(path)
+  end
+
 end

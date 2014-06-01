@@ -7,36 +7,37 @@ describe BooksController do
   let(:invalid_attributes) { valid_attributes.merge(name: "") }
   let!(:book) { FactoryGirl.create :book }
 
-  describe "GET /books" do
-
-    it "params search exists" do
-      books = double
-      allow(Book).to receive(:search).with('sample').and_return(books)
-
-      get :index, { search: 'sample' }, valid_session
-
-      expect(assigns(:books)).to eq(books)
-    end
-
-    it "params search doesnt exist" do
-      books = double
-      allow(Book).to receive(:top).with(count: 10).and_return(books)
-
-      get :index, { }, valid_session
-      
-      expect(assigns(:books)).to eq(books)
-    end
-
-    
+  it "GET /books" do
+    results = double
+    allow(Book).to receive(:search).with("example search key").and_return(results)
+    get :index, { search: 'example search key' }, valid_session
+    expect(assigns(:books)).to eq(results)
   end
 
-  it "GET /books/:id" do
-    book = double to_param: "123"
-    allow(Book).to receive(:find).with("123").and_return(book)
+  describe "GET /books/:id" do
+    describe "when id is a amazon asin" do
+      it "when the book exists on local database" do
+        book = double
+        allow(Book).to receive(:find_by).with(amazon_asin: "1234567890").and_return(book)
+        get :show, {:id => "ASIN1234567890"}, valid_session
+        expect(assigns(:book)).to eq(book)
+      end
 
-    get :show, {:id => book.to_param}, valid_session
+      it "when the book doesnt exist on local database" do
+        amazon_book = double
+        allow(Book).to receive(:find_by).with(amazon_asin: "1234567890").and_return(false)
+        allow(AmazonBook).to receive(:find).with("ASIN1234567890").and_return(amazon_book)
+        get :show, {:id => "ASIN1234567890"}, valid_session
+        expect(assigns(:book)).to eq(amazon_book)
+      end
+    end
 
-    expect(assigns(:book)).to eq(book)
+    it "when id is a local database id" do
+      book = double
+      allow(Book).to receive(:find).with("123").and_return(book)
+      get :show, {:id => "123"}, valid_session
+      expect(assigns(:book)).to eq(book)
+    end
   end
 
   it "GET /books/new" do

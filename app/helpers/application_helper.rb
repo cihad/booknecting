@@ -16,4 +16,13 @@ module ApplicationHelper
     title 'h3', title, &block
   end
 
+  def amazon_book_path *args
+    book_path *args
+  end
+
+  def amazon_book_tags_path *args
+    book_tags_path *args
+  end
+
+
 end

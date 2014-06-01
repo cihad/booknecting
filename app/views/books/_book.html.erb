@@ -1,5 +1,5 @@
-<div class="item">
-  <%= image_tag book.image.medium.url, width: 32 %>
+<div class="item" id="<%= dom_id book %>">
+  <%= image_tag book.image.medium.url, width: 32, alt: book.name, title: book.name %>
   <div class="content">
     <%= link_to book.name, book, class: "header" %>
     <div class="description">
@@ -8,4 +8,4 @@
   </div>
 
   <%= read_button book %>
-</div>  
+</div>

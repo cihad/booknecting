@@ -40,5 +40,13 @@ describe BooksController do
       )
     end
 
+    it "routes to #read" do
+      expect(put: 'books/1/read').to route_to(
+        controller: 'books',
+        action: 'read',
+        id: '1'
+      )
+    end
+
   end
 end

@@ -1,0 +1,19 @@
+<% if @amazon_book %>
+  $('#<%= dom_id @amazon_book %>').replaceWith("<%= j render @book %>")
+  $('form.<%= dom_id @amazon_book %>').replaceWith("<%= j read_button @book %>")
+<% end %>
+
+<% if current_user.read? @book %>
+  $('form.<%= dom_id @book %> button').addClass('green');
+<% else %>
+  $('form.<%= dom_id @book %> button').removeClass('green');
+<% end %>
+
+$('.book .ui.right.floated.label')
+  .html('<%= j t('books.show.read_count', count: @book.users.count) %>')
+
+$('.self .ui.right.floated.label')
+  .html('<%= j t('users.books.read_count_html', count: current_user.books.count) %>')
+
+$('.images')
+  .html('<%= j render @book.users %>')

@@ -13,6 +13,8 @@ FactoryGirl.define do
       r = rand(1..4)
       File.new(Rails.root.join("spec/support/images/0#{r}.png"))
     end
+
+    sequence(:amazon_asin) { |n| "EXAMPLEASIN#{n}" }
   end
 
   factory :tag do
