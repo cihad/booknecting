@@ -16,7 +16,7 @@ gem 'mini_magick', '~> 3.7'
 gem 'pg_search', '~> 0.7'
 gem 'recommendable', '~> 2.1'
 gem 'amazon-ecs'
-
+gem 'unicorn', '~> 4.8.3'
 
 group :development, :test do
   gem 'spring'
@@ -33,4 +33,8 @@ group :test do
   gem 'capybara', '2.2.1'
   gem 'launchy', '~> 2.4'
   gem 'capybara-webkit', '~> 1.1'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
